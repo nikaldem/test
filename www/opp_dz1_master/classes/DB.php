@@ -8,7 +8,7 @@ class DB
         mysql_select_db('test');
     }
 
-    public function query($sql, $class = 'stdClass')
+    public function queryAll($sql, $class = 'stdClass')
     {
         $res = mysql_query($sql);
         if (false === $res){
@@ -19,5 +19,10 @@ class DB
             $ret[] = $row;
         }
         return $ret;
+    }
+
+    public function queryOne($sql, $class = 'stdClass')
+    {
+        return $this->queryAll($sql, $class)[0];
     }
 }
