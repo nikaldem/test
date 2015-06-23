@@ -2,6 +2,7 @@
 class Article {
     public $title;
     public $test;
+    static protected $delim = ':';
     public function __construct($title, $text)
     {
         $this->title = $title;
@@ -18,7 +19,7 @@ class NewsArticle extends Article {
     public $avthor;
     public function view()
     {
-        echo "<h2>" . $this->title . "</h2>" . "<h4>" ."  автор:  " . $this->avthor  . "</h4>" ;
+        echo "<h2>" . $this->title . "</h2>" . "<h4>" . "Автор". self::$delim . " " . $this->avthor  . "</h4>" ;
         echo $this->text;
     }
 }

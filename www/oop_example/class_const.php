@@ -1,7 +1,7 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: NikD
- * Date: 18.06.2015
- * Time: 16:32
- */
+
+class Math {
+    const PI = 3.14159;
+}
+
+echo "Число PI = " . Math::PI;
