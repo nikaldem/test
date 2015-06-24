@@ -8,7 +8,11 @@ class NewsController
     {
         $items = News::getAll();
         $view = new View();
-        $view->assign('items', $items);
+        //$view->assign('items', $items);
+        $view->items = $items;
+
+        //var_dump($view->items);die;
+
         $view->display('news/all.php');
 
         //include __DIR__ . '/../views/news/all.php';
@@ -18,7 +22,12 @@ class NewsController
     {
         $id = $_GET['id'];
         $item = News::getOne($id);
-        include __DIR__ . '/../views/news/one.php';
+        $view = new View();
+        $view->assign('item', $item);
+
+        $view->display('news/one.php');
+
+        //include __DIR__ . '/../views/news/one.php';
     }
 
 }
