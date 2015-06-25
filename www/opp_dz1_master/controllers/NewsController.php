@@ -13,6 +13,7 @@ class NewsController
 
         //var_dump($view->items);die;
 
+        //echo $view->render('news/all.php');
         $view->display('news/all.php');
 
         //include __DIR__ . '/../views/news/all.php';
@@ -23,7 +24,7 @@ class NewsController
         $id = $_GET['id'];
         $item = News::getOne($id);
         $view = new View();
-        $view->assign('item', $item);
+        //$view->assign('item', $item);
 
         $view->display('news/one.php');
 
