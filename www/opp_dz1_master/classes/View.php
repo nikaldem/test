@@ -30,9 +30,9 @@ class View
         foreach ($this->data as $key => $val){
             $$key = $val;
         }
-        ob_start();   //выводит все данные в буфер,а не на дисплей
+        ob_start();   // выводит все данные в буфер,а не на дисплей
         include __DIR__ . '/../views/' . $template;
-        $content = ob_get_contents(); //выводит содержание буфера в переменную
+        $content = ob_get_contents(); // выводит содержание буфера в переменную
         ob_end_clean(); // закончить буферизацию и очистить буфер
         return $content;
     }
