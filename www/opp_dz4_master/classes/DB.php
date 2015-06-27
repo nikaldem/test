@@ -3,6 +3,7 @@
 class DB
 {
     private $dbh;
+    private $className = 'stdClass';
 
     public function __construct()
     {
@@ -12,11 +13,16 @@ class DB
         $this->dbh = new PDO('mysql:dbname=test;host=localhost', 'root', ''); //объект хранит связь с нашей базой данных
     }
 
+    public function setClassName($className)
+    {
+        $this->className = $className;
+    }
+
     public function query($sql, $params=[])
     {
         $sth = $this->dbh->prepare($sql); //подготовит запрос
         $sth->execute($params); //выполнить запрос с указанными параметрами
-        return $sth->fetchAll(PDO::FETCH_OBJ); // возвращаем строки результата запроса
+        return $sth->fetchAll(PDO::FETCH_CLASS, $this->className); // возвращаем строки результата запроса
     }
 
 /*    public function queryAll($sql, $class = 'stdClass')
