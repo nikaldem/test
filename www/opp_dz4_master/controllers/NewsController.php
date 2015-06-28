@@ -9,7 +9,14 @@ class NewsController
         //$db = new DB();
         //$res = $db->query('SELECT * FROM news');
         //$res = $db->query('SELECT * FROM news WHERE id=:id', [':id' => 3]);
-        var_dump(          NewsModel::findAll()             );
+
+       // var_dump(          NewsModel::findOneByPk(1)             );
+
+        $article = new NewsModel();
+        $article->title = 'Привет 2';
+        $article->text = 'Привет, мир 2';
+        $article->insert();
+
         die;
      /*   $items = News::getAll();
         $view = new View();

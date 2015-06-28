@@ -25,6 +25,14 @@ class DB
         return $sth->fetchAll(PDO::FETCH_CLASS, $this->className); // возвращаем строки результата запроса
     }
 
+    public function execute($sql, $params=[])
+    {
+        $sth = $this->dbh->prepare($sql); //подготовит запрос
+        return $sth->execute($params); //возвратить выполненный запрос с указанными параметрами (true или false)
+
+    }
+
+
 /*    public function queryAll($sql, $class = 'stdClass')
     {
         $res = mysql_query($sql);
