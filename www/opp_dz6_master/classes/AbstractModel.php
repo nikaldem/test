@@ -59,7 +59,7 @@ abstract class AbstractModel
         return false;
     }
 
-    public function insert()
+    protected function insert()
     {
         $cols = array_keys($this->data); // возвращает список всех полей(ключей) массива
         //$ins = [];
@@ -76,5 +76,38 @@ abstract class AbstractModel
 
         $db = new DB();
         $db->execute($sql, $data);
+        $this->id = $db->lastInsertId();
+    }
+
+    protected function update()
+    {
+       // $sql = 'UPDATE news SET title=:title, text=:text WHERE id=:id';
+        $cols = [];
+        $data = [];
+        foreach ($this->data as $k => $v){
+            $data[':' . $k] = $v;
+            if ('id' == $k) {
+                continue;
+            }
+
+            $cols[] = $k . '=:' . $k;
+
+        }
+
+        //var_dump($cols);
+        //var_dump($data);
+
+        echo $sql = 'UPDATE ' . static::$table . ' SET ' . implode(', ', $cols) . ' WHERE id=:id';
+        $db = new DB();
+        $db->execute($sql, $data);
+    }
+
+    public function save()
+    {
+        if (!isset($this->id)) {
+            $this->insert();
+        } else {
+            $this->update();
+        }
     }
 }

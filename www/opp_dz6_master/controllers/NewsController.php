@@ -16,9 +16,24 @@ class NewsController
         $article->title = 'Привет 2';
         $article->text = 'Привет, мир 2'; */
 
-        $article = News::findOneByColumn('title', 'Привет');
+       // $article = News::findOneByColumn('title', 'Привет');
 
-        var_dump( ($article) );
+        //var_dump( ($article) );
+
+        $art = new NewsModel();
+        $art->title = 'Сегодня в мире';
+        $art->text = 'Не все спокойно из-за неумелого упраления';
+        $art->save();
+
+       $art = NewsModel::findOneByColumn('title', 'Привет');
+        if (!empty($res)) {
+            return false;
+        }
+        //var_dump($art);
+        $art->title = 'Привет дорогие друзья';
+        $art->save();
+
+        //var_dump($art->id);
 
         //$article->insert();
 
