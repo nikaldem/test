@@ -53,10 +53,15 @@ abstract class AbstractModel
         $sql = 'SELECT * FROM ' . static::$table . ' WHERE '. $column . '=:value';
         $res = $db->query($sql, [':value' => $value]);
         //var_dump($res);
-        if (!empty($res)) {
-            return $res[0];
+        if (empty($res)) {
+            $e = new ModelException('Ничего не найдено...');
+            throw $e; // оператор фроу - бросить наше значение
         }
-        return false;
+        /*if (!empty($res)) {
+            return $res[0];
+        } */
+
+        return $res;
     }
 
     protected function insert()
