@@ -13,7 +13,7 @@ class NewsController
 
 
         //try { //попытайся в базе данных найти статью с заголовком "Привет"
-        //!!    $art = NewsModel::findOneByColumn('title', 'Привет!');
+        //$art = NewsModel::findOneByColumn('title', 'Привет!');
         //} catch (ModelException $e) {    //а если не получится, то поймай исключение
         //    die('Что-то пошло не так ' . $e->getMessage());
         //}

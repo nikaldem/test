@@ -54,7 +54,7 @@ abstract class AbstractModel
         $res = $db->query($sql, [':value' => $value]);
         //var_dump($res);
         if (empty($res)) {
-            $e = new ModelException('Ничего не найдено...');
+            $e = new ModelException('Что вы искали? Ничего не найдено...');
             throw $e; // оператор фроу - бросить наше значение
         }
         /*if (!empty($res)) {

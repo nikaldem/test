@@ -1,5 +1,4 @@
-AddDefaultCharset UTF-8
-php_value memory_limit 256M
 RewriteEngine On
+RewriteBase ./
 
-RewriteRule ^([a-zA-Z]+)\/([a-zA-Z]+)$ ./index.php?ctrl=$1&act=$2
+RewriteRule ^(.*)$ index.php
